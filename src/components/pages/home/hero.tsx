@@ -49,14 +49,18 @@ const Hero = () => {
 			<CarouselContent>
 				{heroData.map((data) => (
 					<CarouselItem key={data.imageUrl}>
-						<Card className="h-dvh rounded-none p-10">
-							<CardContent className="flex  items-center justify-between p-6">
-								<img src={data.imageUrl} alt={data.heading} className="w-1/3" />
+						<Card className="h-dvh rounded-none p-10 flex items-center justify-center">
+							<CardContent className="flex flex-col md:flex-row items-center justify-between p-6 gap-10">
+								<img
+									src={data.imageUrl}
+									alt={data.heading}
+									className="w-1/2 md:w-1/3"
+								/>
 								<div className="flex items-center justify-center flex-col gap-10">
-									<h2 className="text-6xl font-medium text-center">
+									<h2 className="text-3xl md:text-6xl font-medium text-center">
 										{data.heading}
 									</h2>
-									<p className="text-xl text-gray-800 dark:text-gray-200 text-center">
+									<p className="text-sm md:text-xl text-gray-800 dark:text-gray-200 text-center">
 										{data.description}
 									</p>
 								</div>

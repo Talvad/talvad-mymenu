@@ -1,3 +1,4 @@
+import contentCollections from "@content-collections/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
@@ -11,10 +12,12 @@ const config = defineConfig({
 		alias: {
 			"@": "/src",
 			"#": "/src",
+			"content-collections": "./.content-collections/generated",
 		},
 	},
 	plugins: [
 		devtools(),
+		contentCollections(),
 		nitro({ rollupConfig: { external: [/^@sentry\//] } }),
 		tsconfigPaths({ projects: ["./tsconfig.json"] }),
 		tailwindcss(),

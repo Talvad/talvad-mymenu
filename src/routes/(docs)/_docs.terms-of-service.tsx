@@ -6,7 +6,7 @@ import { allPosts } from "content-collections";
 const getPostByName = (name: string) => {
 	return allPosts.find((post) => post._meta.path === name);
 };
-export const Route = createFileRoute("/(docs)/privacy-policy")({
+export const Route = createFileRoute("/(docs)/_docs/terms-of-service")({
 	head: () => ({
 		meta: [
 			{
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/(docs)/privacy-policy")({
 	component: RouteComponent,
 	errorComponent: () => <div>An Error occured</div>,
 	loader: async () => {
-		const code = getPostByName("privacy-policy");
+		const code = getPostByName("terms-of-service");
 
 		if (!code) {
 			throw notFound();

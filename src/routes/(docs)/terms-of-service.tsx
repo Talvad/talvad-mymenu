@@ -17,7 +17,7 @@ export const Route = createFileRoute("/(docs)/terms-of-service")({
 	component: RouteComponent,
 	errorComponent: () => <div>An Error occured</div>,
 	loader: async () => {
-		const code = getPostByName("hello");
+		const code = getPostByName("terms-of-service");
 
 		if (!code) {
 			throw notFound();

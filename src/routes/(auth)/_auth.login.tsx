@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import LoginPage from "#/components/pages/login";
+import { LoginPage } from "#/components/pages/login";
 
-export const Route = createFileRoute("/(auth)/login")({
+export const Route = createFileRoute("/(auth)/_auth/login")({
 	head: () => ({
 		meta: [
 			{

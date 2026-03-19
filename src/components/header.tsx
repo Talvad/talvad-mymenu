@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { CircleUser } from "lucide-react";
 import ThemeToggle from "./theme-toggle";
 
 export default function Header() {
@@ -31,8 +32,11 @@ export default function Header() {
 						About
 					</Link>
 				</div>
-				<div className="ml-auto flex items-center gap-1.5 sm:ml-0 sm:gap-2">
+				<div className="ml-auto flex items-center gap-3 sm:ml-0">
 					<ThemeToggle />
+					<Link to="/login">
+						<CircleUser />
+					</Link>
 				</div>
 			</nav>
 		</header>

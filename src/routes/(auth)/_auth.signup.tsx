@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SignupPage } from "#/components/pages/signup";
 
-export const Route = createFileRoute("/(auth)/signup")({
+export const Route = createFileRoute("/(auth)/_auth/signup")({
 	head: () => ({
 		meta: [
 			{
@@ -12,5 +13,5 @@ export const Route = createFileRoute("/(auth)/signup")({
 });
 
 function RouteComponent() {
-	return <div>Hello "/(auth)/signup"!</div>;
+	return <SignupPage />;
 }

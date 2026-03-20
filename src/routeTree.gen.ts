@@ -11,6 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as docsDocsRouteImport } from './routes/(docs)/_docs'
+import { Route as authAuthRouteImport } from './routes/(auth)/_auth'
+import { Route as docsDocsTermsOfServiceRouteImport } from './routes/(docs)/_docs.terms-of-service'
+import { Route as docsDocsPrivacyPolicyRouteImport } from './routes/(docs)/_docs.privacy-policy'
+import { Route as authAuthSignupRouteImport } from './routes/(auth)/_auth.signup'
+import { Route as authAuthLoginRouteImport } from './routes/(auth)/_auth.login'
+import { Route as authAuthForgotPasswordRouteImport } from './routes/(auth)/_auth.forgot-password'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -22,31 +29,107 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const docsDocsRoute = docsDocsRouteImport.update({
+  id: '/(docs)/_docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authAuthRoute = authAuthRouteImport.update({
+  id: '/(auth)/_auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const docsDocsTermsOfServiceRoute = docsDocsTermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => docsDocsRoute,
+} as any)
+const docsDocsPrivacyPolicyRoute = docsDocsPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => docsDocsRoute,
+} as any)
+const authAuthSignupRoute = authAuthSignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => authAuthRoute,
+} as any)
+const authAuthLoginRoute = authAuthLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => authAuthRoute,
+} as any)
+const authAuthForgotPasswordRoute = authAuthForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => authAuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/forgot-password': typeof authAuthForgotPasswordRoute
+  '/login': typeof authAuthLoginRoute
+  '/signup': typeof authAuthSignupRoute
+  '/privacy-policy': typeof docsDocsPrivacyPolicyRoute
+  '/terms-of-service': typeof docsDocsTermsOfServiceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/forgot-password': typeof authAuthForgotPasswordRoute
+  '/login': typeof authAuthLoginRoute
+  '/signup': typeof authAuthSignupRoute
+  '/privacy-policy': typeof docsDocsPrivacyPolicyRoute
+  '/terms-of-service': typeof docsDocsTermsOfServiceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/(auth)/_auth': typeof authAuthRouteWithChildren
+  '/(docs)/_docs': typeof docsDocsRouteWithChildren
+  '/(auth)/_auth/forgot-password': typeof authAuthForgotPasswordRoute
+  '/(auth)/_auth/login': typeof authAuthLoginRoute
+  '/(auth)/_auth/signup': typeof authAuthSignupRoute
+  '/(docs)/_docs/privacy-policy': typeof docsDocsPrivacyPolicyRoute
+  '/(docs)/_docs/terms-of-service': typeof docsDocsTermsOfServiceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/forgot-password'
+    | '/login'
+    | '/signup'
+    | '/privacy-policy'
+    | '/terms-of-service'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/forgot-password'
+    | '/login'
+    | '/signup'
+    | '/privacy-policy'
+    | '/terms-of-service'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/(auth)/_auth'
+    | '/(docs)/_docs'
+    | '/(auth)/_auth/forgot-password'
+    | '/(auth)/_auth/login'
+    | '/(auth)/_auth/signup'
+    | '/(docs)/_docs/privacy-policy'
+    | '/(docs)/_docs/terms-of-service'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  authAuthRoute: typeof authAuthRouteWithChildren
+  docsDocsRoute: typeof docsDocsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +148,93 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(docs)/_docs': {
+      id: '/(docs)/_docs'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof docsDocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/_auth': {
+      id: '/(auth)/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authAuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(docs)/_docs/terms-of-service': {
+      id: '/(docs)/_docs/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof docsDocsTermsOfServiceRouteImport
+      parentRoute: typeof docsDocsRoute
+    }
+    '/(docs)/_docs/privacy-policy': {
+      id: '/(docs)/_docs/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof docsDocsPrivacyPolicyRouteImport
+      parentRoute: typeof docsDocsRoute
+    }
+    '/(auth)/_auth/signup': {
+      id: '/(auth)/_auth/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof authAuthSignupRouteImport
+      parentRoute: typeof authAuthRoute
+    }
+    '/(auth)/_auth/login': {
+      id: '/(auth)/_auth/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof authAuthLoginRouteImport
+      parentRoute: typeof authAuthRoute
+    }
+    '/(auth)/_auth/forgot-password': {
+      id: '/(auth)/_auth/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof authAuthForgotPasswordRouteImport
+      parentRoute: typeof authAuthRoute
+    }
   }
 }
+
+interface authAuthRouteChildren {
+  authAuthForgotPasswordRoute: typeof authAuthForgotPasswordRoute
+  authAuthLoginRoute: typeof authAuthLoginRoute
+  authAuthSignupRoute: typeof authAuthSignupRoute
+}
+
+const authAuthRouteChildren: authAuthRouteChildren = {
+  authAuthForgotPasswordRoute: authAuthForgotPasswordRoute,
+  authAuthLoginRoute: authAuthLoginRoute,
+  authAuthSignupRoute: authAuthSignupRoute,
+}
+
+const authAuthRouteWithChildren = authAuthRoute._addFileChildren(
+  authAuthRouteChildren,
+)
+
+interface docsDocsRouteChildren {
+  docsDocsPrivacyPolicyRoute: typeof docsDocsPrivacyPolicyRoute
+  docsDocsTermsOfServiceRoute: typeof docsDocsTermsOfServiceRoute
+}
+
+const docsDocsRouteChildren: docsDocsRouteChildren = {
+  docsDocsPrivacyPolicyRoute: docsDocsPrivacyPolicyRoute,
+  docsDocsTermsOfServiceRoute: docsDocsTermsOfServiceRoute,
+}
+
+const docsDocsRouteWithChildren = docsDocsRoute._addFileChildren(
+  docsDocsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  authAuthRoute: authAuthRouteWithChildren,
+  docsDocsRoute: docsDocsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -35,7 +35,7 @@ const heroData = [
 const Hero = () => {
 	return (
 		<Carousel
-			className="w-full h-screen"
+			className="page-wrap h-screen"
 			opts={{
 				align: "start",
 				loop: true,
@@ -49,8 +49,8 @@ const Hero = () => {
 			<CarouselContent>
 				{heroData.map((data) => (
 					<CarouselItem key={data.imageUrl}>
-						<Card className="h-dvh rounded-none p-10 flex items-center justify-center">
-							<CardContent className="flex flex-col md:flex-row items-center justify-between p-6 gap-10">
+						<Card className="h-dvh rounded-none p-10 flex items-center justify-center bg-transparent border-none ring-0 shadow-none">
+							<CardContent className="flex flex-col md:flex-row items-center justify-between gap-10">
 								<img
 									src={data.imageUrl}
 									alt={data.heading}

@@ -36,7 +36,6 @@ export function LoginPage({ ...props }: React.ComponentProps<typeof Card>) {
 			onSubmit: formSchema,
 		},
 		onSubmit: async ({ value }) => {
-			console.log("Inside cleint", value);
 			const result = await loginFn({ data: value });
 			if (result.success) {
 				// Handle successful login
@@ -119,12 +118,20 @@ export function LoginPage({ ...props }: React.ComponentProps<typeof Card>) {
 								);
 							}}
 						/>
-						<Field>
-							<Button type="submit">Login</Button>
-							<FieldDescription className="text-center">
-								Don&apos;t have an account? <Link to="/signup">Sign up</Link>
-							</FieldDescription>
-						</Field>
+						<form.Subscribe
+							// biome-ignore lint/correctness/noChildrenProp: <explanation>
+							children={({ canSubmit }) => (
+								<Field>
+									<Button type="submit" disabled={!canSubmit}>
+										{canSubmit ? "Login" : "Logging in..."}
+									</Button>
+									<FieldDescription className="text-center">
+										Don&apos;t have an account?{" "}
+										<Link to="/signup">Sign up</Link>
+									</FieldDescription>
+								</Field>
+							)}
+						/>
 					</FieldGroup>
 				</form>
 			</CardContent>

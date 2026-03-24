@@ -1,42 +1,50 @@
 import { Link } from "@tanstack/react-router";
-import { CircleUser } from "lucide-react";
 import ThemeToggle from "./theme-toggle";
 
+const navMain = [
+	{
+		title: "Home",
+		href: "/",
+	},
+	{
+		title: "About",
+		href: "/about",
+	},
+	{
+		title: "Pricing",
+		href: "/pricing",
+	},
+];
 export default function Header() {
 	return (
-		<header className="sticky top-0 z-50 border-b border-(--line) bg-(--header-bg) px-4 backdrop-blur-lg">
-			<nav className="page-wrap flex flex-wrap items-center justify-between gap-x-3 gap-y-2 py-3 sm:py-4">
-				<h2 className="m-0 shrink-0 text-base font-semibold tracking-tight">
-					<Link
-						to="/"
-						className="inline-flex items-center gap-2 rounded-full border border-(--chip-line) bg-(--chip-bg) px-3 py-1.5 text-sm text-(--sea-ink) no-underline shadow-[0_8px_24px_rgba(30,90,72,0.08)] sm:px-4 sm:py-2"
-					>
-						<span className="h-2 w-2 rounded-full bg-[linear-gradient(90deg,#56c6be,#7ed3bf)]" />
-						OpenMenu
-					</Link>
-				</h2>
-
-				<div className="flex w-full flex-wrap items-center gap-x-4 gap-y-1 pb-1 text-sm font-semibold sm:w-auto sm:flex-nowrap sm:pb-0">
-					<Link
-						to="/"
-						className="nav-link"
-						activeProps={{ className: "nav-link is-active" }}
-					>
-						Home
-					</Link>
-					<Link
-						to="/about"
-						className="nav-link"
-						activeProps={{ className: "nav-link is-active" }}
-					>
-						About
-					</Link>
+		<header>
+			<nav className="fixed top-0 w-full flex justify-between items-center px-8 h-20 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md z-50 shadow-sm dark:shadow-none tonal-shift-bg-(--surface-container-low)">
+				<div className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-50">
+					OpenMenu
 				</div>
-				<div className="ml-auto flex items-center gap-3 sm:ml-0">
+				<div className="hidden md:flex items-center gap-8">
+					{navMain.map((nav) => (
+						<Link
+							key={nav.title}
+							to={nav.href}
+							className="text-zinc-600 dark:text-zinc-400 font-medium hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+							activeProps={{
+								className:
+									"text-orange-600 dark:text-orange-500 font-bold border-b-2 border-orange-600",
+							}}
+						>
+							{nav.title}
+						</Link>
+					))}
+				</div>
+				<div className="flex items-center gap-4">
+					<button
+						type="button"
+						className="bg-linear-to-br from-(--primary) to-(--primary-container) text-(--on-primary) px-6 py-2.5 rounded-xl font-semibold shadow-lg shadow-(--primary)/20 scale-95 active:scale-90 transition-transform"
+					>
+						Get Started
+					</button>
 					<ThemeToggle />
-					<Link to="/login">
-						<CircleUser />
-					</Link>
 				</div>
 			</nav>
 		</header>

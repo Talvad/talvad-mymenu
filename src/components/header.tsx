@@ -38,12 +38,13 @@ export default function Header() {
 					))}
 				</div>
 				<div className="flex items-center gap-4">
-					<button
-						type="button"
+					<Link
+						to="/login"
 						className="bg-linear-to-br from-(--primary) to-(--primary-container) text-(--on-primary) px-6 py-2.5 rounded-xl font-semibold shadow-lg shadow-(--primary)/20 scale-95 active:scale-90 transition-transform"
 					>
 						Get Started
-					</button>
+					</Link>
+
 					<ThemeToggle />
 				</div>
 			</nav>

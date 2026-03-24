@@ -178,3 +178,15 @@
     @apply font-sans;
   } */
 }
+.prose-ui{
+  background-color: var(--surface);
+  color: var(--on-surface);
+  
+}
+.glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .bg-gradient-primary {
+        background: linear-gradient(135deg, #b02f00 0%, #ff5722 100%);
+      }

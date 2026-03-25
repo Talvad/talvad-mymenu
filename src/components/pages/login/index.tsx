@@ -41,7 +41,7 @@ export function LoginPage({ ...props }: React.ComponentProps<"section">) {
 	// });
 	return (
 		<section
-			className="bg-(--background) font-body text-(--on-surface) min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"
+			className="bg-(--background) font-body text-(--on-surface) min-h-screen flex flex-col items-center justify-center overflow-hidden"
 			{...props}
 		>
 			{/* <!-- Subtle Background Elements --> */}
@@ -51,20 +51,8 @@ export function LoginPage({ ...props }: React.ComponentProps<"section">) {
 			</div>
 			{/* <!-- Main Content Container --> */}
 			<main className="relative z-10 w-full max-w-md px-6 flex flex-col items-center">
-				{/* <!-- Brand Identity Section --> */}
-				<div className="mb-10 text-center flex flex-col items-center">
-					<div className="w-16 h-16 bg-white flex items-center justify-center rounded-xl mb-6 shadow-md shadow-orange-900/5">
-						<Utensils className="text-(--primary) size-9" />
-					</div>
-					<h1 className="font-headline font-black text-3xl tracking-tight text-(--on-surface) mb-2">
-						OpenMenu
-					</h1>
-					<p className="text-(--on-surface-variant) font-label text-sm uppercase tracking-widest">
-						The Digital Maître d’
-					</p>
-				</div>
 				{/* <!-- Authentication Card --> */}
-				<div className="w-full glass-card p-8 rounded-xl border border-white shadow-lg shadow-(--primary)/5">
+				<div className="w-full glass-card p-8 rounded-xl border border-white shadow-lg shadow-(--primary)/5 border-t-3 border-t-(--primary)">
 					<div className="mb-8">
 						<h2 className="font-headline text-2xl font-bold text-(--on-surface)">
 							Welcome back

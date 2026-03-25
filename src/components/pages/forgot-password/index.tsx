@@ -1,13 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import {
-	ArrowLeft,
-	ArrowRight,
-	Eye,
-	Lock,
-	Mail,
-	User,
-	Utensils,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
 
 export function ForgotPasswordPage({
 	...props
@@ -15,27 +7,15 @@ export function ForgotPasswordPage({
 	return (
 		<section className="bg-(--surface) font-body text-(--on-surface) min-h-screen flex flex-col">
 			{/* <!-- Linear/Transactional Page per Conflict Resolution Protocol --> */}
-			<main className="grow flex items-center justify-center px-6 py-12 relative overflow-hidden">
+			<main className="grow flex items-center justify-center px-6 relative overflow-hidden">
 				{/* <!-- Subtle Background Elements matching Light Theme style --> */}
 				<div className="fixed inset-0 overflow-hidden pointer-events-none">
 					<div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-(--primary)/5 rounded-full blur-[120px]"></div>
 					<div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-(--tertiary)/5 rounded-full blur-[120px]"></div>
 				</div>
 				<div className="w-full max-w-[480px] z-10">
-					{/* <!-- Branding Anchor --> */}
-					<div className="flex flex-col items-center mb-10 text-center">
-						<div className="mb-6 flex items-center justify-center w-16 h-16 bg-white rounded-xl shadow-md shadow-orange-900/5">
-							<Utensils className="text-(--primary) size-9" />
-						</div>
-						<h1 className="font-headline font-black text-3xl tracking-tight text-(--on-surface) mb-2">
-							OpenMenu
-						</h1>
-						<p className="font-label text-(--on-surface-variant) text-sm uppercase tracking-widest">
-							The Digital Maître d’
-						</p>
-					</div>
 					{/* <!-- Sign Up Card --> */}
-					<div className="glass-card p-8 md:p-10 rounded-xl shadow-lg shadow-(--primary)/5 border border-white">
+					<div className="glass-card p-8 md:p-10 rounded-xl shadow-lg shadow-(--primary)/5 border border-white border-t-3 border-t-(--primary)">
 						<div className="mb-8">
 							<h2 className="text-2xl font-headline font-bold mb-1 text-(--on-surface)">
 								Forgot Password?

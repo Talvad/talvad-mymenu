@@ -9,7 +9,7 @@ function RouteComponent() {
 	return (
 		<main className="flex min-h-svh flex-col items-center gap-6  py-6 md:py-30">
 			<div className="flex flex-col gap-6">
-				<div className=" flex items-center justify-center mb-6">
+				<div className=" flex items-center justify-center">
 					<img
 						src="/assets/img/logo.png"
 						alt="Logo"

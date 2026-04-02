@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as docsDocsRouteImport } from './routes/(docs)/_docs'
@@ -19,6 +20,11 @@ import { Route as authAuthSignupRouteImport } from './routes/(auth)/_auth.signup
 import { Route as authAuthLoginRouteImport } from './routes/(auth)/_auth.login'
 import { Route as authAuthForgotPasswordRouteImport } from './routes/(auth)/_auth.forgot-password'
 
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -66,6 +72,7 @@ const authAuthForgotPasswordRoute = authAuthForgotPasswordRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/pricing': typeof PricingRoute
   '/forgot-password': typeof authAuthForgotPasswordRoute
   '/login': typeof authAuthLoginRoute
   '/signup': typeof authAuthSignupRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/pricing': typeof PricingRoute
   '/forgot-password': typeof authAuthForgotPasswordRoute
   '/login': typeof authAuthLoginRoute
   '/signup': typeof authAuthSignupRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/pricing': typeof PricingRoute
   '/(auth)/_auth': typeof authAuthRouteWithChildren
   '/(docs)/_docs': typeof docsDocsRouteWithChildren
   '/(auth)/_auth/forgot-password': typeof authAuthForgotPasswordRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/pricing'
     | '/forgot-password'
     | '/login'
     | '/signup'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/pricing'
     | '/forgot-password'
     | '/login'
     | '/signup'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/pricing'
     | '/(auth)/_auth'
     | '/(docs)/_docs'
     | '/(auth)/_auth/forgot-password'
@@ -128,12 +140,20 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  PricingRoute: typeof PricingRoute
   authAuthRoute: typeof authAuthRouteWithChildren
   docsDocsRoute: typeof docsDocsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -233,6 +253,7 @@ const docsDocsRouteWithChildren = docsDocsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  PricingRoute: PricingRoute,
   authAuthRoute: authAuthRouteWithChildren,
   docsDocsRoute: docsDocsRouteWithChildren,
 }

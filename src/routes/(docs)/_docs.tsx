@@ -6,7 +6,7 @@ export const Route = createFileRoute("/(docs)/_docs")({
 
 function RouteComponent() {
 	return (
-		<main className="page-wrap prose-ui px-8 py-4 my-2">
+		<main className="prose-ui px-8 py-20 my-2">
 			<Outlet />
 		</main>
 	);
